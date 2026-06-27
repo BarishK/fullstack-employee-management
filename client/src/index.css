@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  /* Küçük Telefonlar (örn: iPhone SE) */
+  --breakpoint-xs: 375px;
+
+  /* Büyük Telefonlar (örn: iPhone Pro Max, Samsung Ultra) */
+  --breakpoint-sm: 425px;
+
+  /* Tabletler (örn: iPad portre modu) */
+  --breakpoint-md: 768px;
+
+  /* Küçük Dizüstü Bilgisayarlar / Büyük Tabletler (örn: iPad Pro, Macbook Air) */
+  --breakpoint-lg: 1024px;
+
+  /* Standart Masaüstü Monitörler */
+  --breakpoint-xl: 1280px;
+
+  /* Büyük Monitörler ve TV'ler */
+  --breakpoint-2xl: 1536px;
+}
