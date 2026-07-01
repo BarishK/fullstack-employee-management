@@ -10,7 +10,13 @@ import departmentRoutes from "./routes/departmentRoutes.js";
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://fullstack-employee-management.vercel.app", // Senin Vercel linkin
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
