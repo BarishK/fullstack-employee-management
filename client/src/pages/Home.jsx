@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { CountUp } from "react-countup";
-import axios from "axios";
+import API from "../api/axiosInstance";
 
 export default function Home() {
   const [stats, setStats] = useState({
@@ -12,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const result = await axios.get("http://localhost:5001/employees/stats");
+        const result = await API.get("/employees/stats");
 
         if (result.status === 200) {
           setStats(result.data[0]);

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
+
+import API from "../api/axiosInstance";
 
 export default function EmployeeSalaryCard(employee) {
   const { employee_id, first_name, last_name, occupation, salary } =
@@ -13,12 +14,9 @@ export default function EmployeeSalaryCard(employee) {
     }
 
     try {
-      const response = await axios.put(
-        `http://localhost:5001/salary/${employee_id}`,
-        {
-          salary: newSalary,
-        },
-      );
+      const response = await API.put(`/salary/${employee_id}`, {
+        salary: newSalary,
+      });
 
       if (response.status === 200) {
         alert(`${first_name} adlı çalışanın maaşı güncellendi!`);
