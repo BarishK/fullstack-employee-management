@@ -2,9 +2,8 @@ import db from "../db.js";
 
 export const getEmployee = async (req, res) => {
   try {
-    const data = await db.query("SELECT * FROM employee_demographics;");
-
-    res.json(data[0]);
+    const [rows] = await db.query("SELECT * FROM employee_demographics;");
+    res.json(rows);
   } catch (error) {
     console.error("Veritabanı hatası:", error);
     res
@@ -42,9 +41,7 @@ export const addEmployee = async (req, res) => {
       ],
     );
 
-    res.status(201).json({
-      message: "Calisan basariyla eklendi!",
-    });
+    res.status(201).json({ message: "Calisan basariyla eklendi!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Veritabanina ekleme hatasi" });
@@ -58,12 +55,10 @@ export const deleteEmployee = async (req, res) => {
     await db.query("DELETE FROM employee_salary WHERE employee_id = ?", [
       employeeId,
     ]);
-
     const [result] = await db.query(
       "DELETE FROM employee_demographics WHERE employee_id = ?",
       [employeeId],
     );
-
     res.json({ message: "Calisan silindi!", result: result });
   } catch (error) {
     console.error(error);
@@ -74,11 +69,12 @@ export const deleteEmployee = async (req, res) => {
 export const getStats = async (req, res) => {
   try {
     const [rows] = await db.query(
-      " SELECT COUNT(employee_id) AS total_employees,SUM(salary) AS total_budget,AVG(salary) AS average_salary FROM employee_salary;",
+      "SELECT COUNT(employee_id) AS total_employees, IFNULL(SUM(salary), 0) AS total_budget, IFNULL(AVG(salary), 0) AS average_salary FROM employee_salary;",
     );
-
-    res.json(rows);
+    // rows[0] dönüyoruz çünkü COUNT/SUM tek bir obje satırı verir
+    res.json(rows[0]);
   } catch (error) {
+    console.error(error);
     res
       .status(500)
       .json({ error: "Veritabanina baglanilamadi veya sorgu hatali." });

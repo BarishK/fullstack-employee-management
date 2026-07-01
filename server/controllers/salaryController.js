@@ -2,9 +2,8 @@ import db from "../db.js";
 
 export const getSalaries = async (req, res) => {
   try {
-    const data = await db.query("SELECT * FROM employee_salary");
-
-    res.json(data[0]);
+    const [rows] = await db.query("SELECT * FROM employee_salary");
+    res.json(rows);
   } catch (error) {
     console.error("Veritabani hatasi", error);
     res
@@ -19,9 +18,7 @@ export const changeSalary = async (req, res) => {
 
   try {
     const sql = "UPDATE employee_salary SET salary = ? WHERE employee_id = ?";
-
     const [result] = await db.query(sql, [salary, employeeId]);
-
     res.json({ message: "Maaş başarıyla güncellendi!", result });
   } catch (error) {
     console.error(error);
