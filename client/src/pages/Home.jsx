@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../api/axiosInstance";
+import axios from "axios";
 
 export default function Home() {
   const [stats, setStats] = useState({
@@ -11,7 +11,9 @@ export default function Home() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const result = await API.get("/employees/stats");
+        const result = await axios.get(
+          "https://employee-backend-q77y.onrender.com/employees/stats",
+        );
 
         if (result.status === 200) {
           setStats(result.data[0]);

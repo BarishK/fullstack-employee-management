@@ -71,7 +71,7 @@ export const getStats = async (req, res) => {
     const [rows] = await db.query(
       "SELECT COUNT(employee_id) AS total_employees, IFNULL(SUM(salary), 0) AS total_budget, IFNULL(AVG(salary), 0) AS average_salary FROM employee_salary;",
     );
-    // rows[0] dönüyoruz çünkü COUNT/SUM tek bir obje satırı verir
+
     res.json(rows[0]);
   } catch (error) {
     console.error(error);
