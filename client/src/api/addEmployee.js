@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "./axiosInstance";
 
 export const addEmployee = async (emp) => {
   const {
@@ -19,7 +19,7 @@ export const addEmployee = async (emp) => {
   }
 
   try {
-    const response = await axios.post("http://localhost:5001/employees/add", {
+    const response = await API.post("/employees/add", {
       employeeName,
       employeeSurname,
       employeeBirth,

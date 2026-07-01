@@ -24,10 +24,9 @@ export default function Departments() {
 
   return (
     <div>
-      {" "}
       <div className="flex flex-col gap-10">
         <h3 className="text-2xl font-extrabold">Departments</h3>
-        <div className="flex justify-between gap-5">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-5">
           <ul className="flex flex-col gap-1">
             {departments?.map((dept) => {
               return (
@@ -43,7 +42,7 @@ export default function Departments() {
               );
             })}
           </ul>
-          <div className="flex-1 flex flex-col h-screen bg-slate-200">
+          <div className="flex-1 flex flex-col w-full h-screen bg-slate-200">
             {employeesByDept.map((emp) => {
               return (
                 <div

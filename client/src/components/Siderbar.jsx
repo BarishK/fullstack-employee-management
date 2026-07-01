@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 import { FaHome } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { FaHandHoldingUsd } from "react-icons/fa";
+import { FaBuilding } from "react-icons/fa";
 
 export default function Sidebar() {
   return (
@@ -38,7 +39,7 @@ export default function Sidebar() {
             to="/departments"
             className="p-2 rounded hover:bg-slate-100 hover:text-black "
           >
-            <FaHandHoldingUsd className="xs:block md:hidden" />
+            <FaBuilding className="xs:block md:hidden" />
             <span className="xs:hidden md:block">Departments</span>
           </NavLink>
         </nav>

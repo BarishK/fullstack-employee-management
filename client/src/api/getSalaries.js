@@ -1,8 +1,9 @@
 import axios from "axios";
+import API from "./axiosInstance";
 
 export const getSalaries = async () => {
   try {
-    const response = await axios.get("http://localhost:5001/salary");
+    const response = await API.get("/salary");
 
     return response.data;
   } catch (error) {
