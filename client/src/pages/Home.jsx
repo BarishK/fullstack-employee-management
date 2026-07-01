@@ -22,9 +22,8 @@ export default function Home() {
       }
     };
 
-    // 3. Adım: Yukarıda yazdığımız fonksiyonu useEffect içinde tetikliyoruz
     fetchStats();
-  }, []); // Boş bağımlılık dizisi: Sayfa ilk açıldığında sadece 1 kere çalıştır demek
+  }, []);
 
   return (
     <div className="p-4 w-full">
@@ -32,7 +31,6 @@ export default function Home() {
         Home
       </h2>
 
-      {/* İSTATİSTİK KARTLARI (UI'ına tam uyumlu gri kartlar) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div
           className="p-6 rounded-lg shadow-sm"
@@ -67,7 +65,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SİSTEM BİLGİSİ / KULLANIM REHBERİ */}
       <div
         className="p-6 rounded-lg shadow-sm mt-4"
         style={{ backgroundColor: "#e2e8f0", color: "#2d3748" }}
@@ -80,6 +77,25 @@ export default function Home() {
           çalışan ekleyebilir, çalışanları silebilir veya finansal durumları
           yönetmek için maaş güncellemeleri yapabilirsiniz.
         </p>
+      </div>
+      <div className="bg-amber-50/80 border border-amber-200 rounded-xl p-4 backdrop-blur-sm max-w-2xl my-4">
+        <div className="flex gap-3">
+          <span className="text-xl">🤖</span>
+          <div>
+            <h3 className="font-semibold text-amber-900 text-sm">
+              Demo & Portfolyo Modu
+            </h3>
+            <p className="text-xs text-amber-700 mt-1 leading-relaxed">
+              Bu proje canlı bir MySQL veritabanına bağlıdır. Herkes veri
+              ekleyip silebildiği için gördüğünüz veriler değişiklik
+              gösterebilir. Düzeni korumak adına veritabanı
+              <strong>
+                {" "}
+                her 15 dakikada bir otomatik olarak sıfırlanmaktadır.
+              </strong>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

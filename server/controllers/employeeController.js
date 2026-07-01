@@ -2,10 +2,8 @@ import db from "../db.js";
 
 export const getEmployee = async (req, res) => {
   try {
-    // db.query ile SQL sorgumuzu gönderiyoruz
     const data = await db.query("SELECT * FROM employee_demographics;");
 
-    // Gelen verileri frontend'e JSON olarak fırlatıyoruz
     res.json(data[0]);
   } catch (error) {
     console.error("Veritabanı hatası:", error);
@@ -16,8 +14,14 @@ export const getEmployee = async (req, res) => {
 };
 
 export const addEmployee = async (req, res) => {
-  const { employeeName, employeeSurname, employeeBirth, employeeGender } =
-    req.body;
+  const {
+    employeeName,
+    employeeSurname,
+    employeeBirth,
+    employeeGender,
+    employeeDeptID,
+    employeeOccup,
+  } = req.body;
 
   try {
     const [demographicsResult] = await db.query(
@@ -28,8 +32,14 @@ export const addEmployee = async (req, res) => {
     const newEmployeeId = demographicsResult.insertId;
 
     await db.query(
-      "INSERT INTO employee_salary (employee_id, first_name, last_name) VALUES (?, ?, ?)",
-      [newEmployeeId, employeeName, employeeSurname],
+      "INSERT INTO employee_salary (employee_id, first_name, last_name, occupation, dept_id) VALUES (?, ?, ?, ?, ?)",
+      [
+        newEmployeeId,
+        employeeName,
+        employeeSurname,
+        employeeOccup,
+        employeeDeptID,
+      ],
     );
 
     res.status(201).json({

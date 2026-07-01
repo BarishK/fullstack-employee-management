@@ -21,8 +21,8 @@ export default function EmployeeSalaryCard(employee) {
       );
 
       if (response.status === 200) {
-        alert(`${first_name} adlı çalışanın maaşı güncelləndi!`);
-        setNewSalary(""); // İşlem bitince inputu temizle
+        alert(`${first_name} adlı çalışanın maaşı güncellendi!`);
+        setNewSalary("");
 
         window.location.reload();
       }
@@ -43,7 +43,7 @@ export default function EmployeeSalaryCard(employee) {
         </div>
         <div className="flex items-center">
           <span>Salary:</span>
-          <p>{salary}</p>
+          <p>{salary ? salary : "Not Specified"}</p>
         </div>
       </div>
       <div className="flex items-center gap-3">

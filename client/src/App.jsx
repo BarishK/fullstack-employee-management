@@ -3,6 +3,7 @@ import Salary from "./pages/Salary";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import Employees from "./pages/Employees";
+import Departments from "./pages/Departments";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="salary" element={<Salary />} />
           <Route path="employees" element={<Employees />} />
+          <Route path="departments" element={<Departments />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -14,15 +14,13 @@ export const getSalaries = async (req, res) => {
 };
 
 export const changeSalary = async (req, res) => {
-  const employeeId = req.params.id; // URL'den gelen id (örn: 5)
-  const { salary } = req.body; // Axios ile gönderdiğimiz yeni maaş
+  const employeeId = req.params.id;
+  const { salary } = req.body;
 
   try {
-    // MySQL sorgumuz ile sadece o ID'ye sahip çalışanın maaşını güncelliyoruz
-    const [result] = await db.query(
-      "UPDATE employee_salary SET salary = ? WHERE employee_id = ?",
-      [salary, employeeId],
-    );
+    const sql = "UPDATE employee_salary SET salary = ? WHERE employee_id = ?";
+
+    const [result] = await db.query(sql, [salary, employeeId]);
 
     res.json({ message: "Maaş başarıyla güncellendi!", result });
   } catch (error) {
