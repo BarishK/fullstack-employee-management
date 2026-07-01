@@ -15,9 +15,7 @@ export default function Home() {
           "https://employee-backend-q77y.onrender.com/employees/stats",
         );
 
-        if (result.status === 200) {
-          setStats(result.data[0]);
-        }
+        setStats(result.data);
       } catch (error) {
         console.error("İstatistikler çekilirken hata oluştu:", error);
       }
