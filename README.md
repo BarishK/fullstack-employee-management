@@ -1,6 +1,6 @@
 # 🚀 Full-Stack Employee Management System
 
-https://fullstack-employee-management.vercel.app/salary
+https://fullstack-employee-management.vercel.app
 
 This project marks my first hands-on experience stepping from the frontend ecosystem into backend development and relational databases. The primary focus was not on designing a flawless UI/UX, but rather on mastering data flow, REST API architecture, and database queries from the ground up.
 
