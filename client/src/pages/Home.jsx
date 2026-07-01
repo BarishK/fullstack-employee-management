@@ -37,7 +37,7 @@ export default function Home() {
         >
           <p className="text-sm font-medium text-gray-600">Toplam Çalışan</p>
           <p className="text-3xl font-bold mt-2 text-slate-800">
-            {stats.total_employees} Kişi
+            {stats?.total_employees} Kişi
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export default function Home() {
             Aylık Toplam Maaş Bütçesi
           </p>
           <p className="text-3xl font-bold mt-2 text-slate-800">
-            ${Number(stats.total_budget).toLocaleString()}
+            ${Number(stats?.total_budget).toLocaleString()}
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function Home() {
         >
           <p className="text-sm font-medium text-gray-600">Ortalama Maaş</p>
           <p className="text-3xl font-bold mt-2 text-slate-800">
-            ${Math.round(stats.average_salary).toLocaleString()}
+            ${Math.round(stats?.average_salary).toLocaleString()}
           </p>
         </div>
       </div>
